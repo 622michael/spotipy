@@ -103,7 +103,7 @@ class Spotify(object):
         headers['Content-Type'] = 'application/json'
 
         if payload:
-            args["data"] = json.dumps(payload)
+            args["data"] = json.dumps(payload, ensure_ascii=False)
 
         if self.trace_out:
             print(url)
@@ -115,7 +115,7 @@ class Spotify(object):
             print ('http status', r.status_code)
             print(method, r.url)
             if payload:
-                print("DATA", json.dumps(payload))
+                print("DATA", json.dumps(payload, ensure_ascii=False))
 
         try:
             r.raise_for_status()
